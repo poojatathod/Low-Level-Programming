@@ -1,0 +1,33 @@
+section .data
+	msg db "my name is ",10
+	msg1 db "pooja",10,0
+        msg4 db "my string is %s"
+	
+secton .bcc
+	new resb 40
+
+	
+section .text
+	global main
+	extern printf
+
+	
+
+main:
+	mov ebx, msg
+	mov ecx, msg1
+	mov edx, new
+
+abc:	
+        cmp byte[ebx],10
+	
+	mov al, byte[ebx]
+	mov byte[new],al
+	inc ebx
+	inc edx
+	jmp abc
+
+	jz abc1
+
+abc1:
+	

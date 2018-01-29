@@ -1,0 +1,12 @@
+%macro printchr 2
+
+mov ebx %2
+
+%%abc:   cmp ebx,0
+       jz return
+       mov eax,%1
+      
+       
+       int 80h
+       jmp %%abc
+

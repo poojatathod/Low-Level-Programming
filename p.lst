@@ -1,0 +1,66 @@
+     1                                  section .data
+     2 00000000 060000000200000008-            arr dd 6,2,8,9,3,1
+     3 00000009 000000090000000300-
+     4 00000012 000001000000       
+     5 00000018 25640A00                       msg db "%d",10,0
+     6 0000001C 00000000                       temp dd 0
+     7                                  
+     8                                  
+     9                                  section .text
+    10                                          global main
+    11                                          extern printf
+    12                                  
+    13                                  main:
+    14 00000000 B8[00000000]                    mov eax,arr
+    15 00000005 BA00000000                      mov edx,0
+    16                                  
+    17                                  abc1:
+    18 0000000A 83FA06                          cmp edx,6
+    19 0000000D 743C                            jz end
+    20 0000000F B900000000                      mov ecx,0
+    21                                  
+    22 00000014 83F905                  abc2:   cmp ecx,5
+    23 00000017 742A                            jz next
+    24 00000019 8B18                            mov ebx,dword[eax]
+    25 0000001B 891D[1C000000]                  mov dword[temp],ebx
+    26 00000021 8B5804                          mov ebx,dword[eax+4]
+    27 00000024 391D[1C000000]                  cmp dword[temp],ebx
+    28 0000002A 7F06                            jg abc3
+    29 0000002C 41                              inc ecx
+    30 0000002D 83C004                          add eax,4
+    31 00000030 EBE2                            jmp abc2
+    32                                  
+    33                                  abc3:
+    34 00000032 8918                            mov dword[eax],ebx
+    35 00000034 8B1D[1C000000]                  mov ebx,dword[temp]
+    36 0000003A 895804                          mov dword[eax+4],ebx
+    37 0000003D 41                              inc ecx
+    38 0000003E 83C004                          add eax,4
+    39 00000041 EBD1                            jmp abc2
+    40                                  
+    41                                  next:  
+    42 00000043 42                              inc edx
+    43 00000044 B8[00000000]                    mov eax,arr
+    44 00000049 EBBF                            jmp abc1
+    45                                  
+    46                                  end:
+    47 0000004B B8[00000000]                   mov eax,arr
+    48 00000050 BA00000000                     mov edx,0
+    49                                  end1:
+    50 00000055 83FA06                         cmp edx,6
+    51 00000058 7417                           jz stop
+    52 0000005A 60                             pusha
+    53 0000005B FF30                           push dword[eax]
+    54 0000005D 68[18000000]                   push msg
+    55 00000062 E8(00000000)                   call printf
+    56 00000067 83C408                         add esp,8
+    57 0000006A 61                             popa
+    58 0000006B 42                             inc edx
+    59 0000006C 83C004                         add eax,4
+    60 0000006F EBE4                           jmp end1
+    61                                  
+    62                                  stop:
+    63 00000071 C3                             ret
+    64                                  
+    65                                  
+    66                                  

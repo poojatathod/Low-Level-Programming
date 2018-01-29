@@ -1,0 +1,8 @@
+sectiion .data
+
+	n1 dd "%d"
+
+section .text
+
+	
+	

@@ -1,0 +1,40 @@
+section .data
+
+	n1 dd 2
+	msg db "%d"
+
+section .bss
+
+	msg1 resb 30
+
+section .data
+	global main
+	extern printf
+
+
+main:
+	xor eax,eax
+	xor ebx,ebx
+	xor ecx,ecx
+	xor edx,edx
+
+	mov ecx,msg1
+
+abc:
+	mov eax,dword[n1]
+	cmp dword[edx],11
+        jmp return
+        mult edx
+	mov ecx,eax
+	xor eax,eax
+	inc edx
+	jmp abc
+
+return:
+	push msg1
+	push msg
+	call printf
+	add esp,8
+	ret
+	
+	

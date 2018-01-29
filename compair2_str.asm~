@@ -1,0 +1,31 @@
+section .data
+	
+	str1 db "my name is",10
+	str2 db "my name is",0
+	msg1 db "equal"
+	msg2 db "not equal"
+
+section .text
+
+        global main
+	extern printf
+
+
+main:
+	xor eax,eax
+	xor ebx,ebx
+	xor ecx,ecx
+
+	mov ebx,str1
+	mov ecx,str2
+
+abc:
+
+	cmp byte[ebx],0
+	jz
+	mov al,byte[ebx]
+	cmp byte[ecx],al
+	inc ebx
+	inc ecx
+	
+	

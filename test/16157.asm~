@@ -1,0 +1,11 @@
+
+
+section .data
+	str1 db "*"
+	str2 db "clear"
+
+section .text
+	global main
+	extern printf
+
+main:	

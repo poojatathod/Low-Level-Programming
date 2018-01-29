@@ -1,0 +1,27 @@
+	%macros myadd 2
+	mov esi,%1
+	mov edi,%2
+	add esi,edi
+	mov eax,esi
+	%endmacro
+
+section .data
+	msg db "additon of two no is %d",10,0
+
+section .text
+
+	global main
+	extern printf
+
+main:
+
+	myadd eax,ebx
+	myadd 10,30
+	push eax
+	push msg
+	call print
+	add esp,8
+	ret
+	
+	
+	

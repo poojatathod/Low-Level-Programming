@@ -1,0 +1,11 @@
+section .data
+	msg db "my string is",0
+	msg1 db "%s"
+
+section .bss
+ resb 
+section .text
+	global main
+	extern print
+
+	

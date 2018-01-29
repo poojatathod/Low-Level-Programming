@@ -1,0 +1,30 @@
+%macro strcat 3
+
+	mov eax,%1
+	mov ebx,%2
+	mov ecx,%3
+
+%%abc:
+	cmp byte[eax],10
+	jz abc1
+	mov dl,byte[eax]
+	mov byte[ecx],dl
+	inc eax
+	inc ecx
+	jmp abc
+
+%%abc1:
+	mov byte[ecx],' '
+	inc ecx
+	inc eax
+	jmp abc2
+
+%%abc2:
+
+	cmp byte[ebx],10
+	jz return
+	mov dl,byte[ebx]
+	mov byte[ecx],dl
+	inc ebx
+	inc ecx0
+	jmp abc2

@@ -1,0 +1,6 @@
+	%macro mymult 2
+	mov eax,%1
+	mov ebx,%2
+	mul ebx
+	%endmacro
+

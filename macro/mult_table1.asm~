@@ -1,0 +1,35 @@
+	%macro mymult 2
+	mov eax,%1
+	mov edx,%2
+	mul edx
+	%endmacro
+
+section .data
+        msg db "%d"
+
+section .text
+	global main
+	extern printf
+
+main:
+	xor eax,eax
+	xor ebx,ebx
+	xor ecx,rcx
+	xor edx,edx
+        mov eax,10
+
+abc:
+	cmp edx,11
+	jz ret
+	mymult 10,edx
+	pusha
+	push eax
+	push msg
+	call printf
+	add esp,8
+	popa
+	inc edx
+	jmp abc
+
+pqr:
+	ret

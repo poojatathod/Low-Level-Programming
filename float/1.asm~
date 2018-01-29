@@ -1,0 +1,5 @@
+	section.data
+	a dq 29.0
+	b dq 20.1
+
+	section.

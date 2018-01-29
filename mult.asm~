@@ -1,0 +1,18 @@
+section .data
+        num1 dd 10
+	num2 dd 3
+	msg db 'multiplication is:',10,0
+	section .text
+section .text
+	global main
+	extern printf
+main:
+	mov eax,dword[num1]
+	mov ebx,dword[num2]
+	mult exb
+	push msg
+	push eax
+	call printf
+	add esp,8
+	
+	

@@ -1,0 +1,15 @@
+
+section .data
+	msg db "@",10,0
+
+	
+section .text
+	
+	global main
+	extern printf
+
+main:
+	printchr msg,4
+
+return:
+	ret

@@ -1,0 +1,15 @@
+section .data
+         msg db "my friends are the best",0
+	 msg1 db "%s",10,0
+
+
+section .bss
+       msg2 resb 20
+
+section .text
+        global main
+	extern printf
+
+
+main:
+        

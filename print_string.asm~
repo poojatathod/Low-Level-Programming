@@ -1,0 +1,16 @@
+section .data
+        str db "hellow world",0
+	msg1 db "my string is: %s ",10,0
+
+section .text
+        global main
+	extern printf
+
+main:
+	xor ebx,ebx
+	mov ebx,str
+        push ebx
+        call printf
+	add esp,4
+	ret
+	
